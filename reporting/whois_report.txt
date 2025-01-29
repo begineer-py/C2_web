@@ -1,0 +1,7 @@
+WHOIS Information:
+Domain: ['SPOTIFY.COM', 'spotify.com']
+Registrar: Abion AB
+Creation Date: 2006-04-23 09:07:50
+Expiration Date: 2030-04-23 09:07:50
+Name Servers: ['DNS1.P07.NSONE.NET', 'NS-CLOUD-A1.GOOGLEDOMAINS.COM', 'NS-CLOUD-A2.GOOGLEDOMAINS.COM', 'NS-CLOUD-A3.GOOGLEDOMAINS.COM', 'NS-CLOUD-A4.GOOGLEDOMAINS.COM', 'ns-cloud-a3.googledomains.com', 'ns-cloud-a1.googledomains.com', 'ns-cloud-a4.googledomains.com', 'dns1.p07.nsone.net', 'ns-cloud-a2.googledomains.com']
+

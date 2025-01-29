@@ -1,0 +1,54 @@
+User 表
+
+用戶模型，用於存儲系統中的用戶資料。
+與其他表的關聯：
+與 Command_User 表是一對多的關係，用於存儲用戶執行的命令。
+與 Target 表是一對多的關係，用於記錄用戶添加的目標。
+ZOMBIE 表
+
+肉雞模型，用於存儲受控機器的數據。
+與其他表的關聯：
+與 Command_ZOMBIE 表是一對多的關係，用於存儲分配給肉雞的命令。
+Command_User 表
+
+用戶命令模型，用於記錄用戶執行的命令。
+與其他表的關聯：
+外鍵 user_id 指向 User 表，表明命令屬於哪個用戶。
+Command_ZOMBIE 表
+
+肉雞命令模型，用於記錄分配給肉雞的命令及其執行情況。
+與其他表的關聯：
+外鍵 user_id 指向 ZOMBIE 表，表明命令是針對哪個肉雞的。
+Target 表
+
+目標模型，用於存儲滲透測試的目標信息。
+與其他表的關聯：
+外鍵 user_id 指向 User 表，表明目標是由哪個用戶添加的。
+與 crawler、crtsh_Result 和 webtech_Result 表是一對多的關係，記錄對目標的相關掃描和爬蟲數據。
+scan_Result 表
+
+掃描結果模型，用於存儲針對目標的掃描結果。
+與其他表的關聯：
+外鍵 target_id 指向 Target 表，表明掃描結果屬於哪個目標。
+crtsh_Result 表
+
+crt.sh 掃描結果模型，用於存儲域名查詢結果。
+與其他表的關聯：
+外鍵 target_id 指向 Target 表，表明掃描結果屬於哪個目標。
+webtech_Result 表
+
+Web 技術掃描結果模型，用於存儲目標的 Web 技術信息。
+與其他表的關聯：
+外鍵 target_id 指向 Target 表，表明結果屬於哪個目標。
+外鍵 user_id 指向 User 表，表明是由哪個用戶執行的掃描。
+crawler 表
+
+爬蟲模型，用於記錄針對目標進行的爬蟲數據。
+與其他表的關聯：
+外鍵 target_id 指向 Target 表，表明爬蟲屬於哪個目標。
+與 crawler_form 表是一對多的關係，用於存儲爬蟲表單數據。
+crawler_form 表
+
+爬蟲表單模型，用於存儲爬蟲過程中抓取的表單信息。
+與其他表的關聯：
+外鍵 form_id 指向 crawler 表，表明表單數據屬於哪個爬蟲。

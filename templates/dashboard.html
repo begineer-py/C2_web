@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}用戶儀表盤{% endblock %}
+
+{% block content %}
+<h2>用戶儀表盤</h2>
+<p>歡迎，{{ current_user.username }}！這是您的個人儀表盤。</p>
+
+<h3>個人信息</h3>
+<ul>
+    <li>用戶名: {{ current_user.username }}</li>
+    <li>註冊日期: {{ current_user.registered_on }}</li>
+</ul>
+
+<h3>修改用戶名</h3>
+<form method="post" action="{{ url_for('user.update_username') }}">
+    <label for="new_username">新用戶名:</label>
+    <input type="text" id="new_username" name="new_username" required>
+    <button type="submit" class="button">更新用戶名</button>
+</form>
+
+<h3>目標管理</h3>
+<form method="post" action="{{ url_for('user.add_target') }}">
+    <label for="target_ip">目標 IP:(https)</label>
+    <input type="text" id="target_ip" name="target_ip" required>
+    <label for="target_port">目標端口:</label>
+    <input type="number" id="target_port" name="target_port" value="443">
+    <label for="target_username">目標用戶名:</label>
+    <input type="text" id="target_username" name="target_username" required>
+    <label for="target_password">目標密碼:</label>
+    <input type="password" id="target_password" name="target_password" required>
+    <button type="submit" class="button">添加目標</button>
+</form>
+
+<h4>已添加的目標</h4>
+<ul id="targetList" data-user-id="{{ current_user.id }}">
+    {% for target in current_user.targets %}
+    <li data-target-id="{{ target.id }}">
+        (目標https) {{ target.target_ip }}: (目標https無):{{ target.target_ip_no_https }} 目標端口{{ target.target_port }} - 目標用戶名{{ target.target_username }} 目標密碼{{ target.target_password }}
+        <button class="select-target" data-target-id="{{ target.id }}">選擇</button>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>功能</h3>
+<ul>
+    <li><a href="{{ url_for('index.logout') }}">登出</a></li>
+</ul>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %} 

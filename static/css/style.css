@@ -1,0 +1,804 @@
+.scan-results {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.result-header {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+}
+
+.result-header h4 {
+    margin: 0;
+    color: #495057;
+}
+
+.domain-list {
+    background: white;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.domain-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.domain-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    color: #495057;
+}
+
+.domain-list li:last-child {
+    border-bottom: none;
+}
+
+.domain-list li:hover {
+    background-color: #f8f9fa;
+}
+
+.error-message {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    color: #721c24;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+}
+
+.no-results {
+    padding: 15px;
+    text-align: center;
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* Nmap 掃描結果樣式 */
+.scan-result {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.result-header {
+    margin-bottom: 20px;
+}
+
+.result-header h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.port-statistics {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.port-statistics ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.port-statistics li {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.port-statistics li:nth-child(1) {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.port-statistics li:nth-child(2) {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.port-statistics li:nth-child(3) {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.port-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.port-table th {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.port-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+/* 端口狀態樣式 */
+.port-table tr.open {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.port-table tr.open td:nth-child(2) {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.port-table tr.filtered {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.port-table tr.filtered td:nth-child(2) {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+.port-table tr.closed {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.port-table tr.closed td:nth-child(2) {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* 動畫效果 */
+.scan-result {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.error-message {
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fee;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+    border-radius: 4px;
+}
+
+.error-message h4 {
+    margin: 0 0 10px 0;
+    color: #dc3545;
+}
+
+/* 端口狀態圖標 */
+.result-table td:nth-child(2) {
+    font-weight: bold;
+}
+
+.result-table tr.open td:nth-child(2) {
+    color: #28a745;
+}
+
+.result-table tr.filtered td:nth-child(2) {
+    color: #ffc107;
+}
+
+.result-table tr.closed td:nth-child(2) {
+    color: #dc3545;
+}
+
+/* 鼠标悬停效果 */
+.port-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* CRT.sh 掃描結果樣式 */
+.domain-search {
+    margin-bottom: 15px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.domain-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.domain-table th {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.domain-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.domain-table tr:last-child td {
+    border-bottom: none;
+}
+
+.domain-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.copy-btn {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
+}
+
+.copy-btn.copied {
+    background-color: #28a745;
+}
+
+.no-domains {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+/* 網站技術掃描結果樣式 */
+.tech-details {
+    margin-top: 20px;
+}
+
+.tech-category {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.tech-category h4 {
+    background: #f8f9fa;
+    margin: 0;
+    padding: 12px 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.tech-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tech-table th {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tech-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.tech-table tr:last-child td {
+    border-bottom: none;
+}
+
+.tech-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.no-tech {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+/* 置信度样式 */
+.tech-table td:last-child {
+    color: #28a745;
+    font-weight: 500;
+}
+
+/* 预格式化文本样式 */
+pre.tech-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: monospace;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.webtech-results {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.webtech-results .result-header {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.webtech-results .result-header h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.webtech-results .target-info,
+.webtech-results .scan-time {
+    color: #666;
+    margin: 5px 0;
+}
+
+.tech-category {
+    margin: 20px 0;
+}
+
+.tech-category h4 {
+    color: #2c3e50;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tech-table th,
+.tech-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.tech-table th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.tech-table tr:hover {
+    background-color: #f5f5f5;
+    transition: background-color 0.2s ease;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #ffeeba;
+    margin: 10px 0;
+}
+
+.crawler-results {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.crawler-results .result-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.crawler-results h3 {
+    color: #2c3e50;
+    margin: 0 0 15px 0;
+}
+
+.crawler-results .target-info,
+.crawler-results .scan-time,
+.crawler-results .total-urls {
+    color: #666;
+    margin: 5px 0;
+}
+
+.url-search {
+    margin: 20px 0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.url-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.url-table th {
+    background: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+}
+
+.url-table td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.url-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.copy-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+    background: #0056b3;
+}
+
+.copy-btn.copied {
+    background: #28a745;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+/* ParamSpider 掃描結果樣式 */
+.paramspider-results {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.results-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.results-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.control-button:hover {
+    background-color: #0056b3;
+}
+
+.status-area {
+    margin-bottom: 20px;
+}
+
+.status-message {
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+}
+
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.result-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.result-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+}
+
+.result-text {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.result-text pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: monospace;
+}
+
+.copy-button {
+    padding: 8px 16px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+    background-color: #5a6268;
+}
+
+.copy-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Cloudflare 繞過相關樣式 */
+.cloudflare-details {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.cloudflare-details h4 {
+    color: #2196f3;
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    border-bottom: 2px solid #e3f2fd;
+    padding-bottom: 8px;
+}
+
+.cloudflare-details h5 {
+    color: #1976d2;
+    margin: 15px 0 10px 0;
+    font-size: 16px;
+}
+
+.cloudflare-details .result-info {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.cloudflare-details .result-info p {
+    margin: 8px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.cloudflare-details .result-info strong {
+    color: #1565c0;
+    margin-right: 8px;
+}
+
+.cookies-section {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.cookies-list {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.cookie-item {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.cookie-item:last-child {
+    border-bottom: none;
+}
+
+.cookie-item .cookie-name {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.cookie-item .cookie-value {
+    color: #1976d2;
+    word-break: break-all;
+}
+
+#cloudflareBypassButton {
+    background-color: #7e57c2;
+    transition: background-color 0.3s ease;
+}
+
+#cloudflareBypassButton:hover {
+    background-color: #673ab7;
+}
+
+#cloudflareBypassButton:disabled {
+    background-color: #b39ddb;
+    cursor: not-allowed;
+}
+
+.cloudflare-status {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.cloudflare-status.checking {
+    background-color: #fff3e0;
+    color: #e65100;
+    border: 1px solid #ffe0b2;
+}
+
+.cloudflare-status.bypassing {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+}
+
+.cloudflare-status.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.cloudflare-status.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cloudflare-details {
+    animation: fadeIn 0.3s ease-out;
+} 

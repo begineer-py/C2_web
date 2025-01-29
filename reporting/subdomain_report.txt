@@ -1,0 +1,21 @@
+子域名報告 for open.spotify.com (生成於 2024-10-19 14:43:12):
+No assets were discovered
+
+子域名報告 for open.spotify.com (生成於 2024-10-19 14:47:37):
+open.spotify.com (FQDN) --> cname_record --> atc.spotify.map.fastly.net (FQDN)
+
+子域名報告 for open.spotify.com (生成於 2024-10-19 16:24:09):
+No assets were discovered
+
+子域名報告 for open.spotify.com (生成於 2024-10-19 16:35:11):
+open.spotify.com (FQDN) --> cname_record --> atc.spotify.map.fastly.net (FQDN)
+
+子域名報告 for open.spotify.com (生成於 2024-10-19 17:17:19):
+open.spotify.com (FQDN) --> cname_record --> atc.spotify.map.fastly.net (FQDN)
+
+子域名報告 for open.spotify.com (生成於 2024-10-19 17:44:01):
+No assets were discovered
+
+子域名報告 for open.spotify.com (生成於 2024-10-19 17:46:41):
+open.spotify.com (FQDN) --> cname_record --> atc.spotify.map.fastly.net (FQDN)
+

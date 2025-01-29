@@ -1,0 +1,14 @@
+Nikto 扫描摘要
+==============================
+
+目标: example.com
+扫描时间: 2024-12-22 16:36:21
+Nikto 脚本: C:\Users\User.DESKTOP-AQD9BKJ\Desktop\Nazi\nikto\program\nikto.pl
+
+扫描结果:
+
+端口 80:
+- 文本报告: 108 bytes
+
+端口 443:
+- 文本报告: 1699 bytes

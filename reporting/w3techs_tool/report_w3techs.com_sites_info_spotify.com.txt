@@ -1,0 +1,237 @@
+Spotify.com使用的网络技术
+在此处投放广告
+提供者
+Q-Success
+首页
+技术
+报告
+API
+站点
+质量
+用户
+博客
+论坛
+常见问题
+搜索
+特色产品和服务
+在此处投放广告
+查找其他网站： 
+获取我们的 
+站点信息工具
+ 或使用我们的 
+站点信息API
+.
+站点信息- Spotify.com
+Spotify.com使用的网络技术概述。
+网站背景
+Spotify -网络播放器：适合所有人的音乐
+Spotify是一项数字音乐服务，可让您访问数百万首歌曲。
+房源描述第页
+在所有网站中排名前1k
+人气排名
+服务器端编程语言
+JavaScript是一种轻量级、面向对象的跨平台脚本语言。
+JavaScript
+在子域上使用
+客户端编程语言
+JavaScript是一种轻量级、面向对象的跨平台脚本语言，经常在网页中使用。
+JavaScript
+JavaScript库
+jQuery是一个简化HTML文档遍历、事件处理、动画和AJAX交互的JavaScript库。由John Resig开发。
+jQuery
+ 3.6.0
+52%的网站使用较新版本
+在子域上使用
+Bootstrap是一个开源的HTML、CSS和JavaScript框架。
+Bootstrap
+在子域上使用
+Svelte是由Rich Harris创建的开源Web前端框架。
+Svelte
+在子域上使用
+CSS框架
+Bootstrap是一个开源的HTML、CSS和JavaScript框架。
+Bootstrap
+在子域上使用
+Web服务器
+Envoy Proxy是为大型面向服务的架构设计的代理服务器。 
+特使
+The Apache HTTP Server是由Apache Software Foundation开发的开源Web服务器。
+阿帕奇
+在子域上使用
+Node.js是一个用于编写网络程序（如Web服务器）的服务器端JavaScript环境，最初由Ryan Dahl开发。
+Node.js
+在子域上使用
+虚拟主机提供商
+Google提供在其服务器上运行的各种服务。
+Google
+亚马逊是一家总部位于美国的电子商务和云计算提供商。
+Amazon
+在子域上使用
+出租信息部分基于 
+ipinfo.io
+数据C输入Providers
+Google提供在其服务器上运行的各种服务。
+Google
+亚马逊是一家总部位于美国的电子商务和云计算提供商。
+Amazon
+在子域上使用
+反向代理服务
+Fastly是一个内容交付网络。
+Fastly
+Amazon CloudFront是Amazon提供的内容交付Web服务。
+Amazon CloudFront
+在子域上使用
+Akamai是一个内容交付网络。 这包括前品牌Instart Logic和StackPath。
+Akamai
+一直使用到最近
+DNS服务器提供程序
+Google提供要在其服务器上运行的各种服务。
+Google
+NS1提供由IBM拥有的托管和私有DNS服务。
+NS1
+亚马逊是一家总部位于美国的电子商务和云计算提供商。
+Amazon
+在子域上使用
+电子邮件服务器提供商
+Gmail是Google提供的电子邮件服务。
+Gmail
+SSL证书颁发机构
+DigiCert是一家SSL证书颁发机构。 这包括Verizon ，其企业SSL业务已被DigiCert收购。
+DigiCert
+在子域上使用
+Starfield Technologies是SSL证书吃了Go Daddy拥有的权威。
+Starfield
+一直使用到最近
+IdenTrust是一个SSL证书颁发机构。
+IdenTrust
+一直使用到最近
+JavaScript内容交付网络
+jsDelivr是用于托管JavaScript文件的服务。
+jsDelivr
+在子域上使用
+流量分析工具
+Google Analytics （分析）是一项由Google提供的免费服务，用于获取有关网站访问者的详细信息。 这包括广告转化跟踪和Floodlight服务。
+Google Analytics
+在子域上使用
+Fu作为ComScore市场研究的一部分， Circle Studies收集有关一般网站访问模式的信息。
+完整循环研究
+一直使用到最近
+广告网络
+Google广告网络由AdSense、DoubleClick和其他服务组成。
+Google Ads
+在子域上使用
+标签管理器
+Google标签管理器是一项Google服务，用于支持网站管理员管理其网站上的标签。
+Google Tag Manager
+在子域上使用
+站点元素
+外部级联样式表定义样式规则放在单独的CSS文件中。
+外部CSS
+嵌入式级联样式表在<style>网页中的元素中定义一组样式规则。
+嵌入式CSS
+内联级联样式表使用style属性直接在(X) HTML元素中定义样式规则。
+在子域上使用的内联CSS
+
+会话cookie是临时cookie ，在用户关闭浏览器时会被删除。
+会话Cookie
+用于子域
+持久性Cookie ，过期时间长达1天。
+Cookie ex在几小时内激发
+过期时间在1天到1个月之间的永久性Cookie。
+Cookie将在天后过期
+在子域上使用
+过期时间在1个月到1年之间的永久性Cookie。
+Cookie将在个月后过期
+永久性Cookie ，有效期为1至10年。
+Cookie将在年后过期
+在子域上使用
+HttpOnly Cookie仅在HTTP协议中使用，而不在客户端脚本中使用，这可能会提高安全性。
+HttpOnly Cookie
+使用非仅限HTTP的Cookied在HTTP协议和客户端脚本中，这可能是安全威胁。
+非HttpOnly Cookie
+安全Cookie仅通过加密连接使用，这可能会提高安全性。
+安全Cookie
+非安全Cookie可以通过未加密的连接使用，这可能构成安全威胁。
+非安全Cookie
+在子域上使用
+Gzip （ GNU zip ）是一种文件压缩算法。
+Gzip压缩
+强ETag是用于验证缓存网页的HTTP标头字段，表示缓存中字节对字节的相同页面。
+Strong ETag
+在子域上使用
+互联网协议版本6 （ IPv6 ）提供的地址空间比之前的版本4大得多。 我们认为，如果为某个网站分配了128位地址，则该网站将支持IPv6 ，无论该地址传送的内容如何。
+IPv6
+HTTP/2是HTTP网络协议的第二个主要版本。
+HTTP/2
+在子域上使用
+HTTP/3是HTTP网络协议的第三个主要版本，来自QUIC协议。
+HTTP/3
+在子域上使用
+HTTP严格传输安全（ HSTS ）定义了一种机制，使网站能够仅通过安全连接声明自己可访问。
+HTTP严格传输安全
+网站将访问者重定向到使用SSL加密，例如从http://example.com/重定向到https://example.com/。
+默认协议https
+结构化数据格式
+Open Graph协议最初由Facebook开发，是一种基于RDFa的格式，使任何网页都能成为社交图中的ich对象。
+打开图表
+Twitter卡片可自动将照片、视频和媒体元素附加到Tweets。
+Twitter卡片
+通用RDFa （属性中的资源描述框架）是RDFa ，没有进一步的专业化。
+通用RDFa
+标记语言
+HTML5是HTML标准的第五次修订。
+HTML5
+字符编码
+UTF-8 （ 8位Unicode转换格式）是Unicode的可变长度字符编码，向后兼容ASCII。
+UTF-8
+图片文件格式
+PNG （ Portable Network Graphics ）是一种无损压缩图像格式，适用于存储具有均匀着色区域的图形，最初作为GIF的免费开源继承者推出。
+PNG
+在子域上使用
+可缩放矢量图形(SVG)是一种基于XML的矢量图像格式。
+SVG
+在子域上使用
+JPEG （联合摄影专家组）是一种适用于存储摄影图像的有损压缩方法。
+JPEG
+一直使用到最近
+顶级域名
+商业实体
+.com服务器位置
+美国
+瑞典
+在子域上使用
+奥地利
+在子域上使用
+德国
+一直使用到最近
+芬兰
+一直使用到最近
+内容语言
+English
+Spanish
+German
+Japanese
+French
+Italian
+荷兰语、佛兰芒语
+Polish
+Turkish
+印尼语
+中文
+捷克语
+匈牙利语
+瑞典语
+Greek
+分享此页面
+关于我们
+免责声明
+使用条款
+隐私政策
+广告
+联系人
+W3Techs开启  
+ LinkedIn
+ Twitter
+ 乳齿象
+ Bluesky
+版权所有© 2009-2024 Q-Success

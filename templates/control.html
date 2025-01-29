@@ -1,0 +1,26 @@
+{% extends 'base.html' %} <!-- 繼承自 base.html 模板 -->
+
+{% block title %}控制面板{% endblock %} <!-- 設置頁面標題 -->
+
+{% block content %}
+<h2>控制面板</h2>
+<p>這是控制面板的內容。</p>
+
+<div class="command-input">
+    <input type="text" id="commandInput" placeholder="輸入命令"> <!-- 命令輸入框 -->
+    <button onclick="sendCommand()">發送</button> <!-- 發送命令的按鈕 -->
+</div>
+
+<div class="command-list" id="commandList">
+    <!-- 命令列表將在這裡動態更新 -->
+</div>
+
+<!-- 新增按鈕來顯示所有肉雞 -->
+<button onclick="showUsers()">顯示所有肉雞</button>
+<div class="user-list" id="userList">
+    <!-- 肉雞列表將在這裡動態更新 -->
+</div>
+
+<!-- 引用控制面板的 JavaScript 文件 -->
+<script src="{{ url_for('static', filename='control.js') }}"></script> <!-- 引入 control.js -->
+{% endblock %}

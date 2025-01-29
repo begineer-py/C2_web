@@ -1,0 +1,414 @@
+
+
+
+
+
+
+Web Technologies used by Spotify.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+advertise here
+
+
+provided by
+Q-Success
+
+
+
+
+
+
+Home
+
+
+Technologies
+
+
+Reports
+
+
+API
+
+
+Sites
+
+
+Quality
+
+
+Users
+
+
+Blog
+
+
+Forum
+
+
+FAQ
+
+
+Search
+
+
+Featured products and services
+advertise here
+
+
+
+
+
+
+
+
+lookup another site: 
+Get our 
+site info tools
+ or use our 
+site info API
+.
+Site Info - Spotify.com
+Overview of web technologies used by Spotify.com.
+Website Background
+Spotify - Web Player: Music for everyone
+Spotify is a digital music service that gives you access to millions of songs.
+Description on Homepage
+Top 1k among all websites
+Popularity rank
+Server-side Programming Language
+JavaScript is a lightweight, object-oriented, cross-platform scripting language.
+JavaScript
+ 
+used on a subdomain
+Client-side Programming Language
+JavaScript is a lightweight, object-oriented, cross-platform scripting language, often used within web pages.
+JavaScript
+ 
+JavaScript Libraries
+jQuery is a JavaScript library that simplifies HTML document traversing, event handling, animating and Ajax interaction. Originally developed by John Resig.
+jQuery
+ 3.6.0
+52% of sites use a newer version
+used on a subdomain
+Bootstrap is an open source HTML, CSS, and JavaScript framework.
+Bootstrap
+ 
+used on a subdomain
+Svelte is an open-source web front end framework created by Rich Harris.
+Svelte
+ 
+used on a subdomain
+CSS Framework
+Bootstrap is an open source HTML, CSS, and JavaScript framework.
+Bootstrap
+ 
+used on a subdomain
+Web Servers
+Envoy Proxy is a proxy server designed for large service-oriented architectures. 
+Envoy
+ 
+The Apache HTTP Server is an open source web server by the Apache Software Foundation.
+Apache
+ 
+used on a subdomain
+Node.js is a server-side JavaScript environment for writing network programs such as web servers, originally developed by Ryan Dahl.
+Node.js
+ 
+used on a subdomain
+Web Hosting Providers
+Google provides various services to run on its servers.
+Google
+ 
+Amazon is a US-based e-commerce and cloud computing provider.
+Amazon
+ 
+used on a subdomain
+hosting info partly based on data from 
+ipinfo.io
+Data Center Providers
+Google provides various services to run on its servers.
+Google
+ 
+Amazon is a US-based e-commerce and cloud computing provider.
+Amazon
+ 
+used on a subdomain
+Reverse Proxy Services
+Fastly is a content delivery network.
+Fastly
+ 
+Amazon CloudFront is a content delivery web service by Amazon.
+Amazon CloudFront
+ 
+used on a subdomain
+Akamai is a content delivery network. This includes the former brands Instart Logic and StackPath.
+Akamai
+ 
+used until recently
+DNS Server Providers
+Google provides various services to run on its servers.
+Google
+ 
+NS1 provides managed and private DNS services, owned by IBM.
+NS1
+ 
+Amazon is a US-based e-commerce and cloud computing provider.
+Amazon
+ 
+used on a subdomain
+Email Server Provider
+Gmail is the email service provided by Google.
+Gmail
+ 
+SSL Certificate Authorities
+DigiCert is an SSL certificate authority. This includes Verizon, whose Enterprise SSL Business has been acquired by DigiCert.
+DigiCert
+ 
+used on a subdomain
+Starfield Technologies is an SSL certificate authority owned by Go Daddy.
+Starfield
+ 
+used until recently
+IdenTrust is a SSL certificate authority.
+IdenTrust
+ 
+used until recently
+JavaScript Content Delivery Network
+jsDelivr is a service for hosting JavaScript files.
+jsDelivr
+ 
+used on a subdomain
+Traffic Analysis Tools
+Google Analytics is a free service to get detailed statistics about the visitors of a website, provided by Google. This includes the Ads conversion tracking and the Floodlight services.
+Google Analytics
+ 
+used on a subdomain
+Full Circle Studies collects information about general website visitation patterns as part of the ComScore market research.
+Full Circle Studies
+ 
+used until recently
+Advertising Network
+The Google Advertising network consists of AdSense, DoubleClick and other services.
+Google Ads
+ 
+used on a subdomain
+Tag Manager
+The Google Tag Manager is a Google service to support webmasters to manage tags on their websites.
+Google Tag Manager
+ 
+used on a subdomain
+Site Elements
+External Cascading Style Sheets define style rules in a separate CSS file.
+External CSS
+ 
+Embedded Cascading Style Sheets define a set of style rules in a <style> element within a web page.
+Embedded CSS
+ 
+Inline Cascading Style Sheets define style rules directly within an (X)HTML element using the style attribute.
+Inline CSS
+ 
+used on a subdomain
+Session cookies are temporary cookies, which are deleted when the user closes the browser.
+Session Cookies
+ 
+used on a subdomain
+Persistent cookies with an expiration time of up to 1 day.
+Cookies expiring in hours
+ 
+Persistent cookies with an expiration time between 1 day and 1 month.
+Cookies expiring in days
+ 
+used on a subdomain
+Persistent cookies with an expiration time between 1 month and 1 year.
+Cookies expiring in months
+ 
+Persistent cookies with an expiration time between 1 and 10 years.
+Cookies expiring in years
+ 
+used on a subdomain
+HttpOnly cookies are used only in the HTTP protocol and not in client side scripts, which may increase security.
+HttpOnly Cookies
+ 
+Non-HttpOnly cookies are used in the HTTP protocol and also in client side scripts, which may be a security threat.
+Non-HttpOnly Cookies
+ 
+Secure cookies are used only via an encrypted connections, which may increase security.
+Secure Cookies
+ 
+Non-secure cookies may be used via an unencrypted connections, which may be a security threat.
+Non-Secure Cookies
+ 
+used on a subdomain
+Gzip (GNU zip) is a file compression algorithm.
+Gzip Compression
+ 
+A strong ETag is an HTTP header field for validation of cached web pages, that indicates a byte-for-byte identical page in the cache.
+Strong ETag
+ 
+used on a subdomain
+The Internet Protocol version 6 (IPv6) provides amongst others a vastly larger address space than the preceding version 4. We consider a website to support IPv6 if a 128-bit address is assigned to it, regardless of the content delivered at that address.
+IPv6
+ 
+HTTP/2 is the second major version of the HTTP network protocol.
+HTTP/2
+ 
+used on a subdomain
+HTTP/3 is the third major version of the HTTP network protocol, derived from the QUIC protocol.
+HTTP/3
+ 
+used on a subdomain
+HTTP Strict Transport Security (HSTS) defines a mechanism enabling web sites to declare themselves accessible only via secure connections.
+HTTP Strict Transport Security
+ 
+The websites redirects visitors to use SSL encryption, e.g. from http://example.com/ to https://example.com/.
+Default protocol https
+ 
+Structured Data Formats
+The Open Graph protocol, originally developed by Facebook, is an RDFa-based format that enables any web page to become a rich object in a social graph.
+Open Graph
+ 
+Twitter Cards enable automatic attachment of photos, videos and media elements to Tweets.
+Twitter Cards
+ 
+Generic RDFa (Resource Description Framework in attributes) is RDFa without further specialization.
+Generic RDFa
+ 
+Markup Language
+HTML5 is the fifth revision of the HTML standard.
+HTML5
+ 
+Character Encoding
+UTF-8 (8-bit Unicode Transformation Format) is a variable-length character encoding for Unicode, which is backwards compatible with ASCII.
+UTF-8
+ 
+Image File Formats
+PNG (Portable Network Graphics) is a lossless compression image format, suitable to store graphics with uniformly colored areas, and originally introduced as a free, open-source successor of GIF.
+PNG
+ 
+used on a subdomain
+Scalable Vector Graphics (SVG) is an XML-based vector image format.
+SVG
+ 
+used on a subdomain
+JPEG (Joint Photographic Experts Group) is a lossy compression method suitable to store photographic images.
+JPEG
+ 
+used until recently
+Top Level Domain
+Commercial entities
+.com
+ 
+Server Locations
+United States
+ 
+Sweden
+ 
+used on a subdomain
+Austria
+ 
+used on a subdomain
+Germany
+ 
+used until recently
+Finland
+ 
+used until recently
+Content Languages
+English
+ 
+Spanish
+ 
+German
+ 
+Japanese
+ 
+French
+ 
+Italian
+ 
+Dutch, Flemish
+ 
+Polish
+ 
+Turkish
+ 
+Indonesian
+ 
+Chinese
+ 
+Czech
+ 
+Hungarian
+ 
+Swedish
+ 
+Greek
+ 
+ 
+ 
+Share this page
+
+
+
+
+About Us
+
+
+Disclaimer
+
+
+Terms of Use
+
+
+Privacy Policy
+
+
+Advertising
+
+
+Contact
+
+
+
+
+
+W3Techs on  
+
+ LinkedIn
+
+
+ Twitter
+
+
+ Mastodon
+
+
+ Bluesky
+
+
+
+
+Copyright © 2009-2024 Q-Success
+

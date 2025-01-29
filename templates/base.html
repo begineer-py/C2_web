@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}網站標題{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="messages">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block header %}
+    {% if user_id %}
+        <a href="{{ url_for('index.logout') }}">登出</a>
+    {% endif %}
+    {% endblock %}
+    <header class="header">
+        <h1>網站標題</h1>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        <!-- 內容將在這裡插入 -->
+        {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <p>版權所有 &copy; {{ current_year }}</p>
+    </footer>
+
+    <!-- 加載 JavaScript 文件 -->
+    {% block scripts %}{% endblock %}
+</body>
+</html> 

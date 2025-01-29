@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}首頁{% endblock %}
+
+{% block content %}
+<h3>C2_NAZI</h3>
+<a href="{{ url_for('index.login') }}" class="button">登入</a>
+<a href="{{ url_for('index.register') }}" class="button">註冊</a>
+{% endblock %} 

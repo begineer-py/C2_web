@@ -1,0 +1,352 @@
+.scan-results {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.result-header {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.result-header h3 {
+    color: #1565c0;
+    margin: 0 0 10px 0;
+}
+
+.domain-list {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e1e4e8;
+}
+
+.domain-list ul {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.domain-list li {
+    padding: 8px 12px;
+    margin: 4px 0;
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.domain-list li:hover {
+    background-color: #e9ecef;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+.error-message {
+    background-color: #ffebee;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.error-message h3 {
+    color: #c62828;
+    margin: 0 0 10px 0;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+}
+
+.section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.section li {
+    margin-bottom: 12px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #e1e4e8;
+}
+
+.section li:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.section a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.section a:hover {
+    text-decoration: underline;
+}
+
+.section small {
+    color: #6c757d;
+    display: block;
+    margin-top: 5px;
+}
+
+.scan-details {
+    margin-top: 20px;
+}
+
+.security-issues {
+    background-color: #fff3e0;
+}
+
+.security-issues h4 {
+    color: #856404;
+    margin-top: 0;
+}
+
+.form-inputs {
+    margin-top: 8px;
+    padding-left: 20px !important;
+}
+
+.required-field {
+    color: #e74c3c;
+    font-size: 0.9em;
+}
+
+.security-issues pre {
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* 掃描提示框樣式 */
+.scan-alert-modal {
+    font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.scan-alert-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.scan-alert-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #34495e;
+    text-align: left;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.scan-alert-confirm {
+    background-color: #3498db !important;
+    color: white !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.scan-alert-confirm:hover {
+    background-color: #2980b9 !important;
+}
+
+.scan-alert-cancel {
+    background-color: #95a5a6 !important;
+    color: white !important;
+    border-radius: 4px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-size: 1rem !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.scan-alert-cancel:hover {
+    background-color: #7f8c8d !important;
+}
+
+/* 掃描摘要樣式 */
+.scan-summary {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.scan-summary p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+/* 掃描狀態樣式 */
+#scanStatus {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#scanStatus.scanning {
+    background-color: #3498db;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+#scanStatus.success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+#scanStatus.error {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#scanStatus.warning {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.error-details {
+    text-align: left;
+    padding: 1rem;
+    background-color: #fff5f5;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.error-details p {
+    margin: 0.5rem 0;
+    color: #2c3e50;
+}
+
+.error-details .error-hint {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.error-details ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.error-details li {
+    margin: 0.5rem 0;
+    color: #2c3e50;
+}
+
+/* 自定義錯誤提示框樣式 */
+.alert-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.alert-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 90%;
+}
+
+.alert-content h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.alert-content p {
+    margin: 0 0 20px 0;
+    color: #666;
+}
+
+.alert-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.alert-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.confirm-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #45a049;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #da190b;
+}
+
+.alert-content.error h3 {
+    color: #f44336;
+} 

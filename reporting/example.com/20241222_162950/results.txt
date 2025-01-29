@@ -1,0 +1,16 @@
+掃描目標: example.com
+掃描時間: 2024-12-22 16:29:50
+==================================================
+
+Emails found: 3
+----------------------------------------
+email@example.com
+mail@example.com
+someone@example.com
+
+Hosts found: 4
+----------------------------------------
+WWW.example.com
+foo.example.com
+www.example.com
+bar.example.com

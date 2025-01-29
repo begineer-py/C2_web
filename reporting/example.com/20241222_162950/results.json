@@ -1,0 +1,27 @@
+{
+    "asns": [],
+    "emails": [
+        "email@example.com",
+        "mail@example.com",
+        "someone@example.com"
+    ],
+    "hosts": [
+        "WWW.example.com",
+        "bar.example.com",
+        "foo.example.com"
+    ],
+    "interesting_urls": [],
+    "ips": [],
+    "linkedin_links": [],
+    "linkedin_people": [],
+    "metadata": {
+        "limit": 100,
+        "scan_date": "2024-12-22 16:29:50",
+        "source": "bing",
+        "target": "example.com"
+    },
+    "shodan": [],
+    "trello_urls": [],
+    "twitter_people": [],
+    "vhosts": []
+}

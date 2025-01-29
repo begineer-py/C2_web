@@ -1,0 +1,71 @@
+{%extends "base.html"%}
+
+{% block title %}掃描頁面{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>掃描頁面</h2>
+    <div class="target-info">
+        <h3>目標信息</h3>
+        <p>目標 ID: {{ target_id }}</p>
+        <p>目標 IP: {{ target.target_ip }}</p>
+        <p>目標端口: {{ target.target_port }}</p>
+        <p>目標用戶名: {{ target.target_username }}</p>
+        <p>目標密碼: {{ target.target_password }}</p>
+    </div>
+
+    <div class="scan-controls">
+        <div class="scan-section">
+            <button id="nmapButton" class="button scan-button" data-scan-type="nmap" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始 Nmap 掃描</button>
+            <div id="nmap-status" class="scan-status"></div>
+            <div id="nmap-result-{{ target_id }}" class="result-container"></div>
+        </div>
+
+        <div class="scan-section">
+            <button id="crtshButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始 CRT.sh 掃描</button>
+            <div id="crtsh-status" class="scan-status"></div>
+            <div id="crtsh-result-{{ target_id }}" class="result-container"></div>
+        </div>
+
+        <div class="scan-section">
+            <button id="webtechButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始網站技術掃描</button>
+            <div id="webtech-status" class="scan-status"></div>
+            <div id="webtech-result-{{ target_id }}" class="result-container"></div>
+        </div>
+
+        <div class="scan-section">
+            <button id="paramSpiderButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始 ParamSpider 掃描</button>
+            <div id="paramspider-status" class="scan-status"></div>
+            <div id="paramspider-result-{{ target_id }}" class="result-container"></div>
+        </div>
+        <div class="scan-section">
+            <button id="cloudflareBypassButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">
+                檢測並繞過 Cloudflare
+            </button>
+            <div id="cloudflare-status" class="scan-status"></div>
+            <div id="cloudflare-result-{{ target_id }}" class="result-container">
+                <div class="cloudflare-details" style="display: none;">
+                    <h4>Cloudflare 繞過結果</h4>
+                    <div class="result-info">
+                        <p><strong>狀態：</strong><span class="status-text"></span></p>
+                        <p><strong>Cookie 數量：</strong><span class="cookies-count"></span></p>
+                        <p><strong>User Agent：</strong><span class="user-agent"></span></p>
+                    </div>
+                    <div class="cookies-section">
+                        <h5>Cookies</h5>
+                        <div class="cookies-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/nmap_scan.js') }}"></script>
+<script src="{{ url_for('static', filename='js/crtsh_scan.js') }}"></script>
+<script src="{{ url_for('static', filename='js/webtech_scan.js') }}"></script>
+<script src="{{ url_for('static', filename='js/paramspider_scan.js') }}"></script>
+<script src="/static/js/cloudflare_bypass.js"></script>
+{% endblock %}

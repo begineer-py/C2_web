@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block title %}註冊{% endblock %}
+
+{% block content %}
+<h2>註冊</h2>
+<form method="post">
+    <label for="username">用戶名:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">密碼:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit" class="button">註冊</button>
+</form>
+{% endblock %}
