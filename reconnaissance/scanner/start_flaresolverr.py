@@ -27,18 +27,37 @@ def check_docker_installed():
 def start_docker_service():
     """啟動 Docker 服務"""
     print("正在啟動 Docker 服務...")
-    success, output = run_command("net start docker")
-    if success:
-        print("Docker 服務啟動成功")
-        return True
-    else:
-        print(f"Docker 服務啟動失敗: {output}")
-        return False
+    # 使用 runas 以管理員權限執行命令
+    commands = [
+        'powershell -Command "Start-Process -FilePath \'net\' -ArgumentList \'start\', \'com.docker.service\' -Verb RunAs"',
+        'powershell -Command "Start-Process -FilePath \'net\' -ArgumentList \'start\', \'Docker Desktop Service\' -Verb RunAs"'
+    ]
+    
+    for cmd in commands:
+        success, output = run_command(cmd)
+        if success:
+            print("Docker 服務啟動成功")
+            return True
+            
+    print(f"Docker 服務啟動失敗，請確保以管理員權限運行程序")
+    return False
 
 def check_docker_running():
     """檢查 Docker 是否正在運行"""
-    success, _ = run_command("docker info")
-    return success
+    max_retries = 5
+    retry_interval = 3
+    
+    print("正在檢查 Docker 引擎狀態...")
+    for i in range(max_retries):
+        success, output = run_command("docker info")
+        if success:
+            print("Docker 引擎運行正常")
+            return True
+        print(f"等待 Docker 引擎啟動... ({i + 1}/{max_retries})")
+        time.sleep(retry_interval)
+    
+    print("Docker 引擎啟動失敗，請確保 Docker Desktop 已正確運行")
+    return False
 
 def check_flaresolverr_image():
     """檢查 FlareSolverr 映像是否存在"""
@@ -108,23 +127,30 @@ def remove_container(container_name="flaresolverr"):
         print(f"容器 {container_name} 已移除")
 
 def create_flaresolverr_container(container_name="flaresolverr"):
-    """創建並配置 FlareSolverr 容器"""
-    create_cmd = (
-        f"docker run -d --name {container_name} "
-        "--restart unless-stopped "
-        "-p 8191:8191 "
-        "-e LOG_LEVEL=debug "
-        "-e LOG_HTML=true "
-        "-e CAPTCHA_SOLVER=none "
-        "-e TZ=Asia/Taipei "
-        "ghcr.io/flaresolverr/flaresolverr:latest"
+    """創建並運行 FlareSolverr 容器"""
+    print("創建新的 FlareSolverr 容器...")
+    
+    # 先確保 Docker 引擎正常運行
+    if not check_docker_running():
+        return False
+        
+    command = (
+        f"docker run -d --name {container_name} --restart unless-stopped "
+        f"-p 8191:8191 -e LOG_LEVEL=info "
+        f"ghcr.io/flaresolverr/flaresolverr:latest"
     )
-    success, output = run_command(create_cmd)
+    
+    success, output = run_command(command)
     if success:
-        print(f"容器 {container_name} 創建成功")
+        print("FlareSolverr 容器創建成功")
+        # 等待容器初始化
+        time.sleep(5)
         return True
     else:
         print(f"容器創建失敗: {output}")
+        # 如果失敗，檢查具體錯誤
+        _, docker_error = run_command("docker ps -a")
+        print(f"Docker 狀態: {docker_error}")
         return False
 
 def wait_for_service(timeout=60):  # 增加超時時間到60秒
@@ -159,85 +185,53 @@ def wait_for_service(timeout=60):  # 增加超時時間到60秒
     print(get_container_logs())
     return False
 
-def ensure_flaresolverr_running(container_name="flaresolverr"):
-    """確保 FlareSolverr 容器正常運行"""
-    print("=== 檢查 FlareSolverr 容器狀態 ===")
-    
-    # 檢查容器是否存在
-    if check_container_exists(container_name):
-        if check_container_running(container_name):
-            print("檢查現有容器的服務狀態...")
-            if wait_for_service(timeout=30):
-                print("現有 FlareSolverr 服務運行正常")
-                return True
-            else:
-                print("現有容器服務無響應，嘗試重啟容器...")
-                success, _ = run_command(f"docker restart {container_name}")
-                if success:
-                    print(f"容器 {container_name} 已重啟")
-                    if wait_for_service(timeout=60):
-                        print("服務重啟後運行正常")
-                        return True
-                    else:
-                        print("服務重啟後仍無響應")
+def start_flaresolverr():
+    """確保 FlareSolverr 正在運行"""
+    try:
+        if not check_docker_installed():
+            print("未檢測到 Docker，請先安裝 Docker Desktop")
+            return False
+
+        if not check_docker_running():
+            print("Docker 未運行，嘗試啟動...")
+            if not start_docker_service():
+                return False
+            # 給 Docker Desktop 一些時間完全啟動
+            print("等待 Docker 服務完全啟動...")
+            time.sleep(10)
+            if not check_docker_running():
+                print("Docker 引擎啟動失敗，請手動啟動 Docker Desktop")
+                return False
+
+        print("=== 檢查 FlareSolverr 容器狀態 ===")
+        
+        # 檢查映像是否存在
+        if not check_flaresolverr_image():
+            if not pull_flaresolverr_image():
+                return False
+
+        container_name = "flaresolverr"
+        
+        # 如果容器存在但未運行，嘗試啟動它
+        if check_container_exists(container_name):
+            if not check_container_running(container_name):
+                print("容器存在但未運行，嘗試啟動...")
+                success, _ = run_command(f"docker start {container_name}")
+                if not success:
+                    print("容器啟動失敗，嘗試移除並重新創建...")
+                    run_command(f"docker rm -f {container_name}")
+                    if not create_flaresolverr_container(container_name):
                         return False
         else:
-            print("容器存在但未運行，嘗試啟動...")
-            success, _ = run_command(f"docker start {container_name}")
-            if success:
-                print(f"容器 {container_name} 已啟動")
-                if wait_for_service(timeout=60):
-                    print("服務啟動成功")
-                    return True
-                else:
-                    print("服務啟動後無響應")
-                    return False
-            else:
-                print("容器啟動失敗")
+            # 創建新容器
+            if not create_flaresolverr_container(container_name):
                 return False
-    
-    # 如果容器不存在，創建新容器
-    print("容器不存在，創建新容器...")
-    # 確保有最新的映像
-    if not check_flaresolverr_image() and not pull_flaresolverr_image():
-        print("無法獲取 FlareSolverr 映像")
-        return False
-    
-    # 創建新容器
-    print("創建新的 FlareSolverr 容器...")
-    if not create_flaresolverr_container(container_name):
-        return False
-    
-    # 給予新容器時間來啟動和響應
-    return wait_for_service(timeout=60)
 
-def start_flaresolverr():
-    """主函數：確保 FlareSolverr 在容器中正確運行"""
-    print("=== 開始 FlareSolverr 設置流程 ===")
-    
-    # 1. 檢查 Docker 環境
-    if not check_docker_installed():
-        print("錯誤: 未安裝 Docker")
+        # 等待服務完全啟動
+        return wait_for_service()
+    except Exception as e:
+        print(f"啟動 FlareSolverr 服務時發生錯誤: {str(e)}")
         return False
-
-    # 2. 確保 Docker 服務運行
-    if not check_docker_running():
-        print("Docker 未運行，嘗試啟動...")
-        if not start_docker_service():
-            return False
-        print("等待 Docker 服務完全啟動...")
-        time.sleep(5)
-
-    # 3. 啟動並確保 FlareSolverr 容器運行
-    container_name = "flaresolverr"
-    success = ensure_flaresolverr_running(container_name)
-    
-    if success:
-        print("=== FlareSolverr 設置完成 ===")
-    else:
-        print("=== FlareSolverr 設置失敗 ===")
-    
-    return success
 
 if __name__ == "__main__":
     start_flaresolverr()

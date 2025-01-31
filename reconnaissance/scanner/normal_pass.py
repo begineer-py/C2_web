@@ -1,13 +1,13 @@
 import requests
 from datetime import datetime, UTC
 from models import db, Target, crawler, crawler_html, crawler_js, crawler_resource, crawler_form
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 import logging
 import json
-from bs4 import BeautifulSoup
-import re
 import random
 import os
+from reconnaissance.scanner.html_parser import HtmlParser
+
 # 配置日誌
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -28,49 +28,43 @@ def get_random_user_agent():
     user_agents = load_user_agents()
     return random.choice(user_agents)
 
-def extract_forms(html_content, url):
-    """提取頁面中的表單信息"""
-    forms = []
+def fetch_js_content(url, base_url=None):
+    """獲取 JS 文件內容"""
     try:
-        soup = BeautifulSoup(html_content, 'html.parser')
-        for form in soup.find_all('form'):
-            form_data = {
-                'action': form.get('action', ''),
-                'method': form.get('method', 'get'),
-                'inputs': [{'name': input.get('name', ''), 
-                          'type': input.get('type', '')} 
-                         for input in form.find_all('input')]
-            }
-            forms.append({
-                'form_data': json.dumps(form_data),
-                'form_type': form.get('method', 'get'),
-                'form_url': url
-            })
-    except Exception as e:
-        logger.error(f"提取表單時出錯：{str(e)}")
-    return forms
+        if not url.startswith(('http://', 'https://')):
+            if base_url:
+                url = urljoin(base_url, url)
+            else:
+                logger.error(f"無法解析相對路徑 JS URL: {url}")
+                return None
 
-def extract_js_links(html_content):
-    """提取頁面中的 JavaScript 文件"""
-    js_files = []
-    try:
-        soup = BeautifulSoup(html_content, 'html.parser')
-        for script in soup.find_all('script', src=True):
-            js_files.append(script['src'])
-    except Exception as e:
-        logger.error(f"提取 JS 文件時出錯：{str(e)}")
-    return js_files
+        headers = {
+            'User-Agent': get_random_user_agent(),
+            'Accept': '*/*',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive'
+        }
 
-def extract_css_links(html_content):
-    """提取頁面中的 CSS 文件"""
-    css_files = []
-    try:
-        soup = BeautifulSoup(html_content, 'html.parser')
-        for link in soup.find_all('link', rel='stylesheet'):
-            css_files.append(link.get('href', ''))
+        response = requests.get(url, headers=headers, timeout=10, verify=False)
+        response.raise_for_status()
+        
+        # 檢查內容類型
+        content_type = response.headers.get('content-type', '').lower()
+        if 'javascript' in content_type or url.endswith(('.js', '.jsx')):
+            logger.info(f"[+] 成功獲取 JS 內容：{url}")
+            return response.text
+        else:
+            # 如果內容類型不匹配但 URL 以 .js 結尾，仍然返回內容
+            if url.endswith(('.js', '.jsx')):
+                logger.warning(f"[!] URL 內容類型不匹配但仍返回內容：{url} (Content-Type: {content_type})")
+                return response.text
+            logger.warning(f"[!] URL 返回非 JavaScript 內容：{url} (Content-Type: {content_type})")
+            return None
+
     except Exception as e:
-        logger.error(f"提取 CSS 文件時出錯：{str(e)}")
-    return css_files
+        logger.error(f"獲取 JS 內容時出錯：{str(e)}")
+        return None
 
 def scan_normal_website(url, target_id):
     """掃描普通網站的入口函數"""
@@ -94,6 +88,10 @@ def scan_normal_website(url, target_id):
         response = requests.get(url, headers=headers, timeout=10, verify=False)
         response.raise_for_status()
         
+        # 使用 HTML 解析器
+        parser = HtmlParser(base_url=url)
+        parser.parse(response.text)
+        
         # 保存 HTML 內容
         html_record = crawler_html(
             crawler_id=crawl.id,
@@ -102,40 +100,65 @@ def scan_normal_website(url, target_id):
         )
         db.session.add(html_record)
         
-        # 提取並保存表單
-        forms = extract_forms(response.text, url)
-        for form_data in forms:
+        # 保存表單
+        for form in parser.forms:
             form_record = crawler_form(
                 crawler_id=crawl.id,
-                form_data=form_data['form_data'],
-                form_type=form_data['form_type'],
-                form_url=form_data['form_url']
+                form_data=json.dumps(form),
+                form_type=form['method'],
+                form_url=form['action'] or url
             )
             db.session.add(form_record)
         
-        # 提取並保存 JS 文件
-        js_files = extract_js_links(response.text)
-        for js_url in js_files:
-            js_record = crawler_js(
-                crawler_id=crawl.id,
-                js_content=f"// JS URL: {js_url}",
-                js_url=js_url
-            )
-            db.session.add(js_record)
+        # 保存 JS 文件
+        for script in parser.scripts:
+            if script.get('url'):
+                # 獲取 JS 內容
+                js_content = fetch_js_content(script['url'], url)
+                if js_content:
+                    logger.info(f"[+] 成功獲取 JS 內容：{script['url']}")
+                else:
+                    js_content = f"// Failed to fetch JS content from: {script['url']}"
+                    logger.warning(f"[!] 無法獲取 JS 內容：{script['url']}")
+
+                js_record = crawler_js(
+                    crawler_id=crawl.id,
+                    js_content=js_content,
+                    js_url=script['url']
+                )
+                db.session.add(js_record)
+            elif script.get('content'):  # 內聯 JavaScript
+                js_record = crawler_js(
+                    crawler_id=crawl.id,
+                    js_content=script['content'],
+                    js_url=url + "#inline-js"
+                )
+                db.session.add(js_record)
+                logger.info(f"[+] 保存內聯 JavaScript: {url}#inline-js")
         
-        # 提取並保存 CSS 文件
-        css_files = extract_css_links(response.text)
-        for css_url in css_files:
+        # 保存 CSS 文件
+        for style in parser.styles:
             css_record = crawler_resource(
                 crawler_id=crawl.id,
-                resource_url=css_url,
+                resource_url=style['url'],
                 resource_type='css',
-                resource_data=f"/* CSS URL: {css_url} */"
+                resource_data=f"/* CSS URL: {style['url']} */"
             )
             db.session.add(css_record)
         
-        # 更新爬蟲完成時間
+        # 保存其他資源（圖片等）
+        for image in parser.images:
+            resource_record = crawler_resource(
+                crawler_id=crawl.id,
+                resource_url=image['url'],
+                resource_type='image',
+                resource_data=json.dumps(image)
+            )
+            db.session.add(resource_record)
+            
+        # 更新爬蟲完成時間和摘要信息
         crawl.completed_at = datetime.now(UTC)
+        crawl.summary = json.dumps(parser.get_summary())
         db.session.commit()
         
         logger.info(f"成功掃描網站 {url}")

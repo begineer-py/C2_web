@@ -19,20 +19,20 @@
             <button id="nmapButton" class="button scan-button" data-scan-type="nmap" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始 Nmap 掃描</button>
             <div id="nmap-status" class="scan-status"></div>
             <div id="nmap-result-{{ target_id }}" class="result-container"></div>
-        </div>
+    </div>
 
         <div class="scan-section">
             <button id="crtshButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始 CRT.sh 掃描</button>
             <div id="crtsh-status" class="scan-status"></div>
-            <div id="crtsh-result-{{ target_id }}" class="result-container"></div>
+        <div id="crtsh-result-{{ target_id }}" class="result-container"></div>
         </div>
-
+        
         <div class="scan-section">
             <button id="webtechButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始網站技術掃描</button>
             <div id="webtech-status" class="scan-status"></div>
             <div id="webtech-result-{{ target_id }}" class="result-container"></div>
         </div>
-
+        
         <div class="scan-section">
             <button id="paramSpiderButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">開始 ParamSpider 掃描</button>
             <div id="paramspider-status" class="scan-status"></div>
@@ -40,23 +40,21 @@
         </div>
         <div class="scan-section">
             <button id="cloudflareBypassButton" class="button scan-button" data-user-id="{{ current_user.id }}" data-target-id="{{ target_id }}">
-                檢測並繞過 Cloudflare
+                啟動 FlareSolverr 服務
             </button>
             <div id="cloudflare-status" class="scan-status"></div>
             <div id="cloudflare-result-{{ target_id }}" class="result-container">
                 <div class="cloudflare-details" style="display: none;">
-                    <h4>Cloudflare 繞過結果</h4>
+                    <h4>FlareSolverr 服務狀態</h4>
                     <div class="result-info">
-                        <p><strong>狀態：</strong><span class="status-text"></span></p>
-                        <p><strong>Cookie 數量：</strong><span class="cookies-count"></span></p>
-                        <p><strong>User Agent：</strong><span class="user-agent"></span></p>
-                    </div>
-                    <div class="cookies-section">
-                        <h5>Cookies</h5>
-                        <div class="cookies-list"></div>
+                        <p><strong>狀態：</strong><span class="status-text">未運行</span></p>
+                        <p><strong>服務版本：</strong><span class="version">-</span></p>
+                        <p><strong>運行時間：</strong><span class="uptime">-</span></p>
+                        <p><strong>Cloudflare 狀態：</strong><span class="cloudflare-status-text">未檢測</span></p>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

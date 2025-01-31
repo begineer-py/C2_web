@@ -12,27 +12,63 @@ import json
 import os
 from flask_login import login_required, current_user
 from utils.permission import check_user_permission 
+from reconnaissance.scanner.check_cloudflare import check_cloudflare
+from reconnaissance.scanner.start_flaresolverr import start_flaresolverr
+from reconnaissance.scanner.run_cloudflare__pass import CrawlerPass
+import logging
 
 # 創建一個藍圖，用於組織攻擊相關的路由
 attack_bp = Blueprint('attack', __name__)
+logger = logging.getLogger(__name__)
 
-
-# 如果有使用cloudflare，則使用 FlareSolverr 掃描
-@attack_bp.route('/user/<int:user_id>/flaresovlerr/<int:target_id>', methods=['POST'])
+@attack_bp.route('/user/<int:user_id>/start_flaresolverr/<int:target_id>', methods=['POST'])
 @login_required
-def start_flaresolverr(user_id, target_id):
-    # 檢查用戶權限
-    permission_result = check_user_permission(current_user.id, target_id)
-    if not isinstance(permission_result, Target):
-        return permission_result
+def start_flaresolverr_route(user_id, target_id,limit=5):
+    try:
+        # 檢查用戶權限
+        permission_result = check_user_permission(current_user.id, target_id)
+        if not isinstance(permission_result, Target):
+            return permission_result
+            
+        target = permission_result
         
-    target = permission_result
-    return jsonify({'status': 'success', 'message': 'FlareSolverr 已啟動'}), 200
+        # 檢查 FlareSolverr 服務    
+        flaresolverr_status = start_flaresolverr()
+        if not flaresolverr_status:
+            logger.error("FlareSolverr 服務啟動失敗")
+            return jsonify({
+                'success': False,
+                'message': 'FlareSolverr 服務啟動失敗，請檢查 Docker 狀態'
+            }), 500
 
+        # 檢查是否使用 Cloudflare
+        is_cloudflare, message = check_cloudflare(target.target_ip)
+        logger.info(f"Cloudflare 檢查結果: {message}")
+        
+        # 創建新的爬蟲任務
+        crawler_pass = CrawlerPass(user_id, target_id,limit)
+        success, message = crawler_pass.process_target()
 
+        if success:
+            return jsonify({
+                'success': True,
+                'message': '掃描任務已啟動',
+                'is_cloudflare': is_cloudflare,
+                'details': message
+            })
+        else:
+            logger.error(f"爬蟲任務失敗: {message}")
+            return jsonify({
+                'success': False,
+                'message': f'爬蟲任務失敗: {message}'
+            }), 500
 
-
-
+    except Exception as e:
+        logger.error(f"執行過程出錯: {str(e)}")
+        return jsonify({
+            'success': False,
+            'message': f'執行過程出錯：{str(e)}'
+        }), 500
 
 @attack_bp.route('/user/<int:user_id>/nmap/<int:target_id>', methods=['POST'])
 @login_required
